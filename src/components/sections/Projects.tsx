@@ -102,8 +102,14 @@ export const Projects: React.FC = () => {
                 </div>
 
                 <div className="relative h-64 md:h-80 rounded-lg bg-gradient-to-br from-purple-500/20 to-purple-600/10 border border-purple-400/30 flex items-center justify-center overflow-hidden group-hover:shadow-lg transition-all">
-                  <div className="absolute inset-0 bg-gradient-to-br from-purple-400/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <p className="text-gray-400 text-center px-4">Project showcase placeholder</p>
+                  {featuredProject.image ? (
+                    <img src={featuredProject.image} alt={featuredProject.title} className="w-full h-full object-cover" />
+                  ) : (
+                    <>
+                      <div className="absolute inset-0 bg-gradient-to-br from-purple-400/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <p className="text-gray-400 text-center px-4">Project showcase placeholder</p>
+                    </>
+                  )}
                 </div>
               </div>
             </div>

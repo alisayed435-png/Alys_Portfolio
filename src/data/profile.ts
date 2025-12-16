@@ -101,13 +101,21 @@ export const profile: Profile = {
   ],
   projects: [
     {
+      id: "0",
+      title: "FunnelCraft",
+      description: "A powerful marketing funnel builder with drag-and-drop interface, real-time analytics, and seamless integrations for creating high-converting sales funnels.",
+      stack: ["React", "TypeScript", "TailwindCSS", "Node.js"],
+      live: "https://funnel-craft-green.vercel.app/",
+      image: "/Screenshot 2025-12-16 160108.png",
+      featured: true,
+    },
+    {
       id: "1",
       title: "E-Commerce Platform",
       description: "A full-featured e-commerce platform with real-time inventory management, payment processing, and admin dashboard.",
       stack: ["React", "Node.js", "MongoDB", "Stripe"],
       github: "https://github.com/yourusername/ecommerce",
       live: "https://ecommerce-demo.vercel.app",
-      featured: true,
     },
     {
       id: "2",
