@@ -54,8 +54,13 @@ export const Navigation: React.FC<NavigationProps> = ({ activeSection }) => {
                 className="flex items-center hover:opacity-80 transition-opacity"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-              >
-                <DuwangLogo size={32} showText={true} />
+            >
+              <DuwangLogo size={32} showText={true} />
+            </motion.a>
+
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center gap-8">
+              {navItems.map((item) => (
                 <motion.button
                   key={item.id}
                   onClick={() => handleNavClick(item.id)}
