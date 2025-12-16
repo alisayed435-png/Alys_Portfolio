@@ -123,7 +123,7 @@ export const Footer: React.FC = () => {
               aria-label="Scroll to top"
             >
               <span>Top</span>
-              <ArrowRightIcon size={14} className="rotate-90" />
+              <ArrowRightIcon size={14} className="-rotate-90" />
             </motion.button>
           </motion.div>
         </div>
