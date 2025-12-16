@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { GitHubIcon, LinkedInIcon, TwitterIcon, UpworkIcon, ArrowRightIcon } from '@/components/icons';
+import { DuwangLogo } from '@/components/icons/DuwangLogo';
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -45,9 +46,9 @@ export const Footer: React.FC = () => {
           >
             <a
               href="#home"
-              className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent block mb-2"
+              className="inline-block mb-4 hover:opacity-80 transition-opacity"
             >
-              AH
+              <DuwangLogo size={40} showText={true} />
             </a>
             <p className="text-gray-400 text-sm">
               Full Stack Developer building modern web experiences

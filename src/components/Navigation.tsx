@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MenuIcon, CloseIcon } from '@/components/icons';
+import { DuwangLogo } from '@/components/icons/DuwangLogo';
 
 interface NavigationProps {
   activeSection: string;
@@ -50,16 +51,11 @@ export const Navigation: React.FC<NavigationProps> = ({ activeSection }) => {
             <motion.a
               href="#home"
               onClick={() => handleNavClick('home')}
-              className="text-xl font-bold bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              AH
-            </motion.a>
-
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-8">
-              {navItems.map((item) => (
+                className="flex items-center hover:opacity-80 transition-opacity"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <DuwangLogo size={32} showText={true} />
                 <motion.button
                   key={item.id}
                   onClick={() => handleNavClick(item.id)}
