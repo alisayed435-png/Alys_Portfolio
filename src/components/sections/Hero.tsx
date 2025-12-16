@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { WhatsAppIcon, EmailIcon, GitHubIcon, UpworkIcon, ExternalLinkIcon, ArrowRightIcon } from '@/components/icons';
+import { WhatsAppIcon, EmailIcon, GitHubIcon, UpworkIcon } from '@/components/icons';
 
 export const Hero: React.FC = () => {
   const handleWhatsAppClick = () => {

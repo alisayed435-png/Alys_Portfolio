@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLinkIcon, GitHubIcon, ArrowRightIcon } from '@/components/icons';
+import { ExternalLinkIcon, GitHubIcon } from '@/components/icons';
 import { profile } from '@/data/profile';
 
 export const Projects: React.FC = () => {
