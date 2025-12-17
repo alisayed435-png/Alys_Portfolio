@@ -1,37 +1,82 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
+import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
 import { profile } from '@/data/profile';
 
-const skillIcons: Record<string, string> = {
-  'React': 'R',
-  'TypeScript': 'TS',
-  'TailwindCSS': 'TW',
-  'Next.js': 'NX',
-  'Framer Motion': 'FM',
-  'Vue.js': 'VU',
-  'Node.js': 'NO',
-  'Express': 'EX',
-  'Python': 'PY',
-  'PostgreSQL': 'PG',
-  'MongoDB': 'MO',
-  'Firebase': 'FB',
-  'Docker': 'DO',
-  'Git': 'GI',
-  'GitHub': 'GH',
-  'Vercel': 'VE',
-  'AWS': 'AW',
-  'CI/CD': 'CI',
+const SkillIcon: React.FC<{ name: string }> = ({ name }) => {
+  const icons: Record<string, JSX.Element> = {
+    'React': (
+      <svg viewBox="0 0 24 24" fill="currentColor" className="w-10 h-10">
+        <path d="M12 10.11c1.03 0 1.87.84 1.87 1.89 0 1-.84 1.85-1.87 1.85S10.13 13 10.13 12c0-1.05.84-1.89 1.87-1.89M7.37 20c.63.38 2.01-.2 3.6-1.7-.52-.59-1.03-1.23-1.51-1.9a22.7 22.7 0 0 1-2.4-.36c-.51 2.14-.32 3.61.31 3.96m.71-5.74l-.29-.51c-.11.29-.22.58-.29.86.27.06.57.11.88.16l-.3-.51m6.54-.76l.81-1.5-.81-1.5c-.3-.53-.62-1-.91-1.47C13.17 9 12.6 9 12 9c-.6 0-1.17 0-1.71.03-.29.47-.61.94-.91 1.47L8.57 12l.81 1.5c.3.53.62 1 .91 1.47.54.03 1.11.03 1.71.03.6 0 1.17 0 1.71-.03.29-.47.61-.94.91-1.47M12 6.78c-.19.22-.39.45-.59.72h1.18c-.2-.27-.4-.5-.59-.72m0 10.44c.19-.22.39-.45.59-.72h-1.18c.2.27.4.5.59.72M16.62 4c-.62-.38-2 .2-3.59 1.7.52.59 1.03 1.23 1.51 1.9.82.08 1.63.2 2.4.36.51-2.14.32-3.61-.32-3.96m-.7 5.74l.29.51c.11-.29.22-.58.29-.86-.27-.06-.57-.11-.88-.16l.3.51m1.45-7.05c1.47.84 1.63 3.05 1.01 5.63 2.54.75 4.37 1.99 4.37 3.68 0 1.69-1.83 2.93-4.37 3.68.62 2.58.46 4.79-1.01 5.63-1.46.84-3.45-.12-5.37-1.95-1.92 1.83-3.91 2.79-5.38 1.95-1.46-.84-1.62-3.05-1-5.63-2.54-.75-4.37-1.99-4.37-3.68 0-1.69 1.83-2.93 4.37-3.68-.62-2.58-.46-4.79 1-5.63 1.47-.84 3.46.12 5.38 1.95 1.92-1.83 3.91-2.79 5.37-1.95M17.08 12c.34.75.64 1.5.89 2.26 2.1-.63 3.28-1.53 3.28-2.26 0-.73-1.18-1.63-3.28-2.26-.25.76-.55 1.51-.89 2.26M6.92 12c-.34-.75-.64-1.5-.89-2.26-2.1.63-3.28 1.53-3.28 2.26 0 .73 1.18 1.63 3.28 2.26.25-.76.55-1.51.89-2.26m9 2.26l-.3.51c.31-.05.61-.1.88-.16-.07-.28-.18-.57-.29-.86l-.29.51m-2.89 4.04c1.59 1.5 2.97 2.08 3.59 1.7.64-.35.83-1.82.32-3.96-.77.16-1.58.28-2.4.36-.48.67-.99 1.31-1.51 1.9M8.08 9.74l.3-.51c-.31.05-.61.1-.88.16.07.28.18.57.29.86l.29-.51m2.89-4.04C9.38 4.2 8 3.62 7.37 4c-.63.35-.82 1.82-.31 3.96a22.7 22.7 0 0 1 2.4-.36c.48-.67.99-1.31 1.51-1.9z"/>
+      </svg>
+    ),
+    'TypeScript': (
+      <svg viewBox="0 0 24 24" fill="currentColor" className="w-10 h-10">
+        <path d="M3 3h18v18H3V3zm10.71 14.86c.5.98 1.51 1.73 3.09 1.73 1.6 0 2.8-.83 2.8-2.36 0-1.41-.81-2.04-2.25-2.66l-.42-.18c-.73-.31-1.04-.52-1.04-1.02 0-.41.31-.73.81-.73.48 0 .8.2 1.09.73l1.31-.87c-.55-.97-1.33-1.33-2.4-1.33-1.51 0-2.48.96-2.48 2.23 0 1.38.81 2.03 2.03 2.55l.42.17c.77.34 1.24.55 1.24 1.13 0 .48-.45.83-1.15.83-.83 0-1.31-.43-1.67-1.03l-1.38.8zM13 11.25H8.5V20H10V13h3v7h1.5V13h3v-1.75H13z"/>
+      </svg>
+    ),
+    'TailwindCSS': (
+      <svg viewBox="0 0 24 24" fill="currentColor" className="w-10 h-10">
+        <path d="M12 6c-2.67 0-4.33 1.33-5 4 1-1.33 2.17-1.83 3.5-1.5.76.19 1.31.74 1.91 1.35.98 1 2.09 2.15 4.59 2.15 2.67 0 4.33-1.33 5-4-1 1.33-2.17 1.83-3.5 1.5-.76-.19-1.3-.74-1.91-1.35C15.61 7.15 14.5 6 12 6m-5 6c-2.67 0-4.33 1.33-5 4 1-1.33 2.17-1.83 3.5-1.5.76.19 1.3.74 1.91 1.35C8.39 16.85 9.5 18 12 18c2.67 0 4.33-1.33 5-4-1 1.33-2.17 1.83-3.5 1.5-.76-.19-1.3-.74-1.91-1.35C10.61 13.15 9.5 12 7 12z"/>
+      </svg>
+    ),
+    'Next.js': (
+      <svg viewBox="0 0 24 24" fill="currentColor" className="w-10 h-10">
+        <path d="M11.5 0c-.157 0-.314.004-.471.012C5.2.274.273 5.201.012 11.03 0 11.186 0 11.343 0 11.5 0 17.851 5.149 23 11.5 23c.157 0 .314 0 .471-.012 5.829-.262 10.756-5.189 11.017-11.018.008-.157.012-.314.012-.47C23 5.149 17.851 0 11.5 0zm.274 1.973c4.98.164 9.005 4.189 9.169 9.169l-10.66-14.7c.492.073.984.163 1.491.273V5.95h1.368V7.32h-1.368v5.953l8.186 11.287c-1.024.698-2.212 1.206-3.5 1.459l-8.686-11.97V18.1h-1.368v-4.05H7.41v-1.368h.99V7.729H7.41V6.361h.99V1.715c.492-.164.984-.27 1.476-.354v4.589h1.368V1.973z"/>
+      </svg>
+    ),
+    'Node.js': (
+      <svg viewBox="0 0 24 24" fill="currentColor" className="w-10 h-10">
+        <path d="M11.998 0c-.263 0-.526.07-.755.204L2.116 5.303c-.458.264-.755.752-.755 1.283v10.828c0 .531.297 1.019.755 1.283l9.127 5.099c.229.134.492.204.755.204.263 0 .526-.07.755-.204l9.127-5.099c.458-.264.755-.752.755-1.283V6.586c0-.531-.297-1.019-.755-1.283L12.753.204C12.524.07 12.261 0 11.998 0zm.002 3.28c.175 0 .35.047.505.139l6.042 3.376c.307.172.505.493.505.842v6.725c0 .349-.198.67-.505.842l-6.042 3.376c-.155.092-.33.139-.505.139-.175 0-.35-.047-.505-.139l-6.042-3.376c-.307-.172-.505-.493-.505-.842V7.637c0-.349.198-.67.505-.842L11.495 3.42c.155-.092.33-.139.505-.139z"/>
+      </svg>
+    ),
+    'Python': (
+      <svg viewBox="0 0 24 24" fill="currentColor" className="w-10 h-10">
+        <path d="M9.585 11.692h4.328s2.432.039 2.432-2.35V5.391S16.714 3 11.936 3C7.362 3 7.647 4.983 7.647 4.983l.006 2.055h4.363v.617H5.92s-2.927-.332-2.927 4.282 2.555 4.45 2.555 4.45h1.524v-2.141s-.083-2.554 2.513-2.554zm-.056-5.74c-.084 0-.152-.034-.207-.087-.054-.053-.082-.119-.082-.195 0-.076.028-.142.082-.195.055-.053.123-.087.207-.087.084 0 .152.034.207.087.054.053.082.119.082.195 0 .076-.028.142-.082.195-.055.053-.123.087-.207.087z"/>
+        <path d="M14.415 12.308h-4.328s-2.432-.039-2.432 2.35v3.951S7.286 21 12.064 21c4.574 0 4.289-1.983 4.289-1.983l-.006-2.055h-4.363v-.617h6.096s2.927.332 2.927-4.282-2.555-4.45-2.555-4.45h-1.524v2.141s.083 2.554-2.513 2.554zm.056 5.74c.084 0 .152.034.207.087.054.053.082.119.082.195 0 .076-.028.142-.082.195-.055.053-.123.087-.207.087-.084 0-.152-.034-.207-.087-.054-.053-.082-.119-.082-.195 0-.076.028-.142.082-.195.055-.053.123-.087.207-.087z"/>
+      </svg>
+    ),
+    'MongoDB': (
+      <svg viewBox="0 0 24 24" fill="currentColor" className="w-10 h-10">
+        <path d="M17.193 9.555c-1.264-5.58-4.252-7.414-4.573-8.115-.28-.394-.53-.954-.735-1.44-.036.495-.055.685-.523 1.184-.723.566-4.438 3.682-4.74 10.02-.282 5.912 4.27 9.435 4.888 9.884l.07.05A73.49 73.49 0 0111.91 24h.481c.114-1.032.284-2.056.51-3.07.417-.296.604-.463.85-.693a11.342 11.342 0 003.639-8.464c.01-.814-.103-1.662-.197-2.218zm-5.336 8.195s0-8.291.275-8.29c.213 0 .49 10.695.49 10.695-.381-.045-.765-1.76-.765-2.405z"/>
+      </svg>
+    ),
+    'PostgreSQL': (
+      <svg viewBox="0 0 24 24" fill="currentColor" className="w-10 h-10">
+        <path d="M17.128 0c-1.025 0-1.928.277-2.679.792-.738.507-1.341 1.242-1.825 2.145-.967 1.804-1.482 4.298-1.779 6.622-.148 1.162-.237 2.289-.323 3.289-.086.993-.168 1.868-.314 2.495-.146.623-.346 1.003-.767 1.003-.344 0-.767-.255-1.115-.795-.352-.541-.608-1.313-.608-2.316 0-2.006.864-5.212 1.991-7.83 1.135-2.636 2.613-4.723 4.537-4.723.344 0 .668.069.955.203l.021-.141C14.916.365 14.188 0 13.366 0c-2.396 0-4.27 2.487-5.573 5.512C6.494 8.537 5.752 12.112 5.752 15c0 1.416.344 2.647.967 3.555.617.901 1.482 1.445 2.537 1.445 1.298 0 2.081-.765 2.474-1.766.395-1.005.562-2.317.684-3.596.124-1.287.201-2.538.344-3.656.286-2.235.743-4.447 1.481-5.825.363-.679.779-1.203 1.234-1.524.449-.314.934-.477 1.437-.477.786 0 1.523.383 2.116 1.016.601.64 1.063 1.527 1.063 2.527 0 1.002-.344 2.007-.936 2.738-.584.723-1.368 1.178-2.241 1.178-.545 0-1.041-.176-1.437-.489-.389-.307-.668-.748-.668-1.316 0-.568.279-1.009.668-1.316.396-.313.892-.489 1.437-.489v-.283c-1.095 0-2.088.56-2.675 1.402-.579.832-.892 1.918-.892 3.013 0 1.095.313 2.181.892 3.013.587.842 1.58 1.402 2.675 1.402 1.298 0 2.474-.656 3.323-1.66.841-.996 1.341-2.317 1.341-3.73 0-1.413-.5-2.734-1.341-3.73-.849-1.004-2.025-1.66-3.323-1.66z"/>
+      </svg>
+    ),
+    'Docker': (
+      <svg viewBox="0 0 24 24" fill="currentColor" className="w-10 h-10">
+        <path d="M13.983 11.078h2.119a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.119a.185.185 0 00-.185.185v1.888c0 .102.083.185.185.185m-2.954-5.43h2.118a.186.186 0 00.186-.186V3.574a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m0 2.716h2.118a.187.187 0 00.186-.186V6.29a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.887c0 .102.082.185.185.186m-2.93 0h2.12a.186.186 0 00.184-.186V6.29a.185.185 0 00-.185-.185H8.1a.185.185 0 00-.185.185v1.887c0 .102.083.185.185.186m-2.964 0h2.119a.186.186 0 00.185-.186V6.29a.185.185 0 00-.185-.185H5.136a.186.186 0 00-.186.185v1.887c0 .102.084.185.186.186m5.893 2.715h2.118a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m-2.93 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.083.185.185.185m-2.964 0h2.119a.185.185 0 00.185-.185V9.006a.185.185 0 00-.184-.186h-2.12a.186.186 0 00-.186.186v1.887c0 .102.084.185.186.185m-2.92 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.082.185.185.185M23.763 9.89c-.065-.051-.672-.51-1.954-.51-.338 0-.676.03-1.01.09-.248-1.827-1.666-2.782-1.824-2.89l-.415-.252-.252.413c-.186.303-.346.628-.469.97-.368 1.01-.301 2.047.253 2.914-.679.386-1.77.496-2.04.496H.748c-.137 0-.252.11-.252.248 0 .525.07 1.044.211 1.543.186.645.483 1.225.882 1.72.551.683 1.278 1.182 2.084 1.444 1.206.39 2.476.577 3.754.577.983 0 1.964-.09 2.93-.268 1.146-.21 2.26-.583 3.31-1.108 1.046-.524 1.985-1.217 2.782-2.054 1.234-1.293 2.042-2.958 2.398-4.938.332-.01.748-.034 1.195-.22.399-.167.754-.414 1.05-.749.194-.218.357-.465.485-.735l.165-.407-.41.248z"/>
+      </svg>
+    ),
+    'Git': (
+      <svg viewBox="0 0 24 24" fill="currentColor" className="w-10 h-10">
+        <path d="M23.546 10.93L13.067.452c-.604-.603-1.582-.603-2.188 0L8.708 2.627l2.76 2.76c.645-.215 1.379-.07 1.889.441.516.515.658 1.258.438 1.9l2.658 2.66c.645-.223 1.387-.078 1.9.435.721.72.721 1.884 0 2.604-.719.719-1.881.719-2.6 0-.539-.541-.674-1.337-.404-1.996L12.86 8.955v6.525c.176.086.342.203.488.348.713.721.713 1.883 0 2.6-.719.721-1.889.721-2.609 0-.719-.719-.719-1.879 0-2.598.182-.18.387-.316.605-.406V8.835c-.217-.091-.424-.222-.6-.401-.545-.545-.676-1.342-.396-2.009L7.636 3.7.45 10.881c-.6.605-.6 1.584 0 2.189l10.48 10.477c.604.604 1.582.604 2.186 0l10.43-10.43c.605-.603.605-1.582 0-2.187"/>
+      </svg>
+    ),
+  };
+
+  return icons[name] || (
+    <div className="w-10 h-10 flex items-center justify-center text-2xl font-bold">
+      {name.substring(0, 2)}
+    </div>
+  );
 };
 
 export const Skills: React.FC = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
+  const scrollRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
+
+  const scroll = (category: string, direction: 'left' | 'right') => {
+    const container = scrollRefs.current[category];
+    if (container) {
+      const scrollAmount = 300;
+      container.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth',
+      });
+    }
   };
 
   const itemVariants = {
@@ -44,17 +89,23 @@ export const Skills: React.FC = () => {
   };
 
   return (
-    <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8">
+    <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-dark-950/50 to-dark-900/50">
       <div className="max-w-6xl mx-auto">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.6 }}
-          className="text-4xl sm:text-5xl font-bold mb-12 bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent"
-        >
-          Skills & Expertise
-        </motion.h2>
+        <div className="flex items-start justify-between mb-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-100px' }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-4xl sm:text-5xl font-bold mb-4 bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent">
+              My Extensive List of Skills
+            </h2>
+            <p className="text-gray-400 text-lg">
+              Building seamless digital experiences with modern technologies
+            </p>
+          </motion.div>
+        </div>
 
         <div className="space-y-12">
           {profile.skills.map((group, groupIndex) => (
@@ -64,36 +115,57 @@ export const Skills: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-100px' }}
               transition={{ duration: 0.6, delay: groupIndex * 0.1 }}
+              className="relative"
             >
-              <h3 className="text-2xl font-semibold text-white mb-6">{group.category}</h3>
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="text-2xl font-semibold text-white">{group.category}</h3>
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => scroll(group.category, 'left')}
+                    className="p-2 rounded-full bg-white/5 border border-purple-400/30 hover:bg-white/10 transition-all text-white"
+                    aria-label="Scroll left"
+                  >
+                    <ChevronLeftIcon size={20} />
+                  </button>
+                  <button
+                    onClick={() => scroll(group.category, 'right')}
+                    className="p-2 rounded-full bg-white/5 border border-purple-400/30 hover:bg-white/10 transition-all text-white"
+                    aria-label="Scroll right"
+                  >
+                    <ChevronRightIcon size={20} />
+                  </button>
+                </div>
+              </div>
 
-              <motion.div
-                variants={containerVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: '-100px' }}
-                className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"
+              <div
+                ref={(el) => {
+                  scrollRefs.current[group.category] = el;
+                }}
+                className="flex gap-4 overflow-x-auto scrollbar-hide scroll-smooth pb-4"
+                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
               >
                 {group.skills.map((skill) => (
                   <motion.div
                     key={skill.name}
                     variants={itemVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
                     whileHover={{ scale: 1.05, y: -4 }}
-                    className="group relative"
+                    className="group relative flex-shrink-0 w-64"
                   >
-                    <div className="p-4 rounded-xl bg-gradient-to-br from-purple-500/10 to-purple-600/5 border border-purple-400/20 hover:border-purple-400/50 transition-all cursor-pointer h-full flex flex-col items-center justify-center gap-3 hover:shadow-lg hover:shadow-purple-500/20">
-                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center text-white font-semibold text-sm">
-                        {skillIcons[skill.name] || skill.name.substring(0, 2)}
+                    <div className="p-6 rounded-xl bg-gradient-to-br from-purple-500/10 to-purple-600/5 border border-purple-400/20 hover:border-purple-400/50 transition-all cursor-pointer h-full flex flex-col items-center justify-center gap-4 hover:shadow-lg hover:shadow-purple-500/20">
+                      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center text-white">
+                        <SkillIcon name={skill.name} />
                       </div>
-                      <span className="text-sm font-medium text-gray-200 text-center">{skill.name}</span>
-                    </div>
-
-                    <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity">
-                      <div className="w-1 h-1 rounded-full bg-purple-400" />
+                      <span className="text-base font-semibold text-white text-center">{skill.name}</span>
+                      <p className="text-xs text-gray-400 text-center">
+                        Proficient in building scalable solutions
+                      </p>
                     </div>
                   </motion.div>
                 ))}
-              </motion.div>
+              </div>
             </motion.div>
           ))}
         </div>

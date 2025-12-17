@@ -23,8 +23,9 @@ export const Projects: React.FC = () => {
     },
   };
 
-  const featuredProject = profile.projects.find((p) => p.featured);
-  const otherProjects = profile.projects.filter((p) => !p.featured);
+  // Most recent project (first in array) is always featured
+  const featuredProject = profile.projects[0];
+  const otherProjects = profile.projects.slice(1);
 
   return (
     <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-dark-900/50 to-dark-950/50">
@@ -36,10 +37,10 @@ export const Projects: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-4xl sm:text-5xl font-bold mb-12 bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent"
         >
-          Featured Projects
+          Featured Project
         </motion.h2>
 
-        {/* Featured Project */}
+        {/* Featured Project - Always the most recent */}
         {featuredProject && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -52,7 +53,7 @@ export const Projects: React.FC = () => {
               <div className="grid md:grid-cols-2 gap-8 items-center">
                 <div>
                   <div className="inline-block px-3 py-1 rounded-full bg-purple-500/20 border border-purple-400/30 mb-4">
-                    <span className="text-xs font-semibold text-purple-300">Featured</span>
+                    <span className="text-xs font-semibold text-purple-300">Latest Project</span>
                   </div>
 
                   <h3 className="text-3xl font-bold text-white mb-4">{featuredProject.title}</h3>
@@ -101,9 +102,9 @@ export const Projects: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="relative h-64 md:h-80 rounded-lg bg-gradient-to-br from-purple-500/20 to-purple-600/10 border border-purple-400/30 flex items-center justify-center overflow-hidden group-hover:shadow-lg transition-all">
+                <div className="relative rounded-lg bg-gradient-to-br from-purple-500/20 to-purple-600/10 border border-purple-400/30 flex items-center justify-center overflow-hidden group-hover:shadow-lg transition-all">
                   {featuredProject.image ? (
-                    <img src={featuredProject.image} alt={featuredProject.title} className="w-full h-full object-cover" />
+                    <img src={featuredProject.image} alt={featuredProject.title} className="w-full h-auto" />
                   ) : (
                     <>
                       <div className="absolute inset-0 bg-gradient-to-br from-purple-400/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -135,6 +136,12 @@ export const Projects: React.FC = () => {
               whileHover={{ y: -8 }}
               className="group relative rounded-xl overflow-hidden bg-gradient-to-br from-purple-500/10 to-purple-600/5 border border-purple-400/20 hover:border-purple-400/50 transition-all duration-300 p-6 hover:shadow-lg hover:shadow-purple-500/20"
             >
+              {project.image && (
+                <div className="relative rounded-lg overflow-hidden mb-4 bg-gradient-to-br from-purple-500/20 to-purple-600/10 border border-purple-400/30">
+                  <img src={project.image} alt={project.title} className="w-full h-auto" />
+                </div>
+              )}
+
               <h4 className="text-xl font-bold text-white mb-3">{project.title}</h4>
 
               <p className="text-gray-300 text-sm mb-4 line-clamp-3">{project.description}</p>

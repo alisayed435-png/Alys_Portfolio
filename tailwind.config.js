@@ -14,10 +14,10 @@ export default {
           950: '#0E0E1A',
         },
         'purple': {
-          400: '#A78BFA',
-          500: '#8B5CF6',
-          600: '#7C3AED',
-          700: '#6D28D9',
+          400: '#60A5FA',
+          500: '#3B82F6',
+          600: '#2563EB',
+          700: '#1E40AF',
         },
       },
       backdropBlur: {
@@ -26,7 +26,7 @@ export default {
       },
       boxShadow: {
         'glass': '0 8px 32px rgba(0, 0, 0, 0.2)',
-        'glow': '0 0 20px rgba(139, 92, 246, 0.5)',
+        'glow': '0 0 20px rgba(37, 99, 235, 0.5)',
       },
       fontFamily: {
         'sans': ['-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', '"Helvetica Neue"', 'Arial', 'sans-serif'],
@@ -38,8 +38,8 @@ export default {
       },
       keyframes: {
         'pulse-glow': {
-          '0%, 100%': { opacity: '1', boxShadow: '0 0 20px rgba(139, 92, 246, 0.5)' },
-          '50%': { opacity: '0.8', boxShadow: '0 0 30px rgba(139, 92, 246, 0.8)' },
+          '0%, 100%': { opacity: '1', boxShadow: '0 0 20px rgba(37, 99, 235, 0.5)' },
+          '50%': { opacity: '0.8', boxShadow: '0 0 30px rgba(37, 99, 235, 0.8)' },
         },
         'float': {
           '0%, 100%': { transform: 'translateY(0px)' },
