@@ -111,6 +111,14 @@ export const profile: Profile = {
     },
     {
       id: "1",
+      title: "TripFlow - Travel Planner",
+      description: "Modern travel planning application with smart itinerary creation, destination explorer, packing lists, and booking management.",
+      stack: ["React", "TypeScript", "TailwindCSS", "Framer Motion"],
+      live: "https://travel-planner-flame.vercel.app/",
+      image: "/Screenshot 2025-12-17 201930.png",
+    },
+    {
+      id: "2",
       title: "E-Commerce Platform",
       description: "A full-featured e-commerce platform with real-time inventory management, payment processing, and admin dashboard.",
       stack: ["React", "Node.js", "MongoDB", "Stripe"],
@@ -119,6 +127,14 @@ export const profile: Profile = {
     },
     {
       id: "2",
+      title: "E-Commerce Platform",
+      description: "A full-featured e-commerce platform with real-time inventory management, payment processing, and admin dashboard.",
+      stack: ["React", "Node.js", "MongoDB", "Stripe"],
+      github: "https://github.com/yourusername/ecommerce",
+      live: "https://ecommerce-demo.vercel.app",
+    },
+    {
+      id: "3",
       title: "Task Management App",
       description: "Collaborative task management application with real-time updates, team workspaces, and integrations.",
       stack: ["React", "Firebase", "TailwindCSS"],
@@ -126,7 +142,7 @@ export const profile: Profile = {
       live: "https://taskapp-demo.vercel.app",
     },
     {
-      id: "3",
+      id: "4",
       title: "AI Chat Interface",
       description: "Modern chat application with AI integration, message history, and user authentication.",
       stack: ["Next.js", "OpenAI API", "PostgreSQL", "Stripe"],
@@ -134,7 +150,7 @@ export const profile: Profile = {
       live: "https://aichat-demo.vercel.app",
     },
     {
-      id: "4",
+      id: "5",
       title: "Portfolio Website",
       description: "Modern portfolio website showcasing projects and skills with glassmorphism design.",
       stack: ["React", "TypeScript", "TailwindCSS", "Framer Motion"],
