@@ -107,7 +107,7 @@ export const profile: Profile = {
       stack: ["React", "TypeScript", "TailwindCSS", "Node.js"],
       github: "https://github.com/alisayed435-png/CaseCraft",
       live: "https://case-craft-alpha.vercel.app/",
-      image: "/casecraft-thumbnail.png",
+      image: "/screencapture-case-craft-alpha-vercel-app-2025-12-18-21_42_03.png",
       featured: true,
     },
     {
