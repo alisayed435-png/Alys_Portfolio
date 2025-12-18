@@ -102,15 +102,24 @@ export const profile: Profile = {
   projects: [
     {
       id: "0",
+      title: "CaseCraft - Legal Practice Management",
+      description: "Comprehensive legal practice management platform with client intelligence, case orchestration, and analytics. Features six pillars of practice excellence including workflow automation and strategic growth tools.",
+      stack: ["React", "TypeScript", "TailwindCSS", "Node.js"],
+      github: "https://github.com/alisayed435-png/CaseCraft",
+      live: "https://case-craft-alpha.vercel.app/",
+      image: "/casecraft-thumbnail.png",
+      featured: true,
+    },
+    {
+      id: "1",
       title: "TripFlow - Travel Planner",
       description: "Modern travel planning application with smart itinerary creation, destination explorer, packing lists, and booking management.",
       stack: ["React", "TypeScript", "TailwindCSS", "Framer Motion"],
       live: "https://travel-planner-flame.vercel.app/",
       image: "/Screenshot 2025-12-17 201930.png",
-      featured: true,
     },
     {
-      id: "1",
+      id: "2",
       title: "FunnelCraft",
       description: "A powerful marketing funnel builder with drag-and-drop interface, real-time analytics, and seamless integrations for creating high-converting sales funnels.",
       stack: ["React", "TypeScript", "TailwindCSS", "Node.js"],
