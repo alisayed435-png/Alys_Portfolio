@@ -4,11 +4,11 @@ import { WhatsAppIcon, EmailIcon, GitHubIcon, UpworkIcon } from '@/components/ic
 
 export const Hero: React.FC = () => {
   const handleWhatsAppClick = () => {
-    window.open('https://wa.me/XXXXXXXXXXX', '_blank', 'noopener,noreferrer');
+    window.open('https://chat.whatsapp.com/IytJHQDI1fIH8WqmZFp4eM', '_blank', 'noopener,noreferrer');
   };
 
   const handleEmailClick = () => {
-    window.location.href = 'mailto:aly@example.com?subject=Let%27s%20work%20together&body=Hi%20Aly%2C%0A%0AI%27d%20like%20to%20discuss%20a%20project%20opportunity.';
+    window.location.href = 'mailto:aly.hamad.duwang@gmail.com?subject=Let%27s%20work%20together&body=Hi%20Aly%2C%0A%0AI%27d%20like%20to%20discuss%20a%20project%20opportunity.';
   };
 
   const ctaButtons = [

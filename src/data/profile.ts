@@ -59,8 +59,8 @@ export const profile: Profile = {
   about: "I'm a full stack developer passionate about creating modern, performant web applications. With expertise spanning frontend and backend technologies, I deliver end-to-end solutions that solve real problems. I focus on clean code, scalability, and user experience.",
   availability: "Available for projects",
   contact: {
-    email: "aly@example.com",
-    whatsappUrl: "https://wa.me/XXXXXXXXXXX",
+    email: "aly.hamad.duwang@gmail.com",
+    whatsappUrl: "https://chat.whatsapp.com/IytJHQDI1fIH8WqmZFp4eM",
     githubRepoUrl: "https://github.com/yourusername",
     upworkProfileUrl: "https://www.upwork.com/freelancers/~alyhamad",
   },
