@@ -10,6 +10,13 @@
   body {
     @apply bg-dark-950 text-white;
     font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeSpeed;
+  }
+  
+  img, video {
+    content-visibility: auto;
   }
 }
 
@@ -27,7 +34,6 @@
   }
 }
 
-/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -46,15 +52,14 @@
   background: #3B82F6;
 }
 
-/* Selection color */
 ::selection {
   @apply bg-purple-600 text-white;
 }
 
-/* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
-  * {
-    animation: none !important;
-    transition: none !important;
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

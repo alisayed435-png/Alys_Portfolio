@@ -1,35 +1,48 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, lazy, Suspense } from 'react';
 import { Navigation } from '@/components/Navigation';
 import { Hero } from '@/components/sections/Hero';
-import { About } from '@/components/sections/About';
-import { Skills } from '@/components/sections/Skills';
-import { Projects } from '@/components/sections/Projects';
-import { Experience } from '@/components/sections/Experience';
-import { Contact } from '@/components/sections/Contact';
-import { Footer } from '@/components/sections/Footer';
+
+// Lazy load below-the-fold sections
+const About = lazy(() => import('@/components/sections/About').then(m => ({ default: m.About })));
+const Skills = lazy(() => import('@/components/sections/Skills').then(m => ({ default: m.Skills })));
+const Projects = lazy(() => import('@/components/sections/Projects').then(m => ({ default: m.Projects })));
+const Experience = lazy(() => import('@/components/sections/Experience').then(m => ({ default: m.Experience })));
+const Contact = lazy(() => import('@/components/sections/Contact').then(m => ({ default: m.Contact })));
+const Footer = lazy(() => import('@/components/sections/Footer').then(m => ({ default: m.Footer })));
+
+const sections = ['home', 'about', 'skills', 'projects', 'experience', 'contact'] as const;
 
 function App() {
   const [activeSection, setActiveSection] = useState('home');
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = ['home', 'about', 'skills', 'projects', 'experience', 'contact'];
-
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          if (rect.top <= 100 && rect.bottom >= 100) {
-            setActiveSection(section);
-            break;
-          }
+  const handleScroll = useCallback(() => {
+    for (const section of sections) {
+      const element = document.getElementById(section);
+      if (element) {
+        const rect = element.getBoundingClientRect();
+        if (rect.top <= 100 && rect.bottom >= 100) {
+          setActiveSection(section);
+          break;
         }
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    let ticking = false;
+    const onScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [handleScroll]);
 
   return (
     <div className="bg-dark-950 text-white overflow-x-hidden">
@@ -37,14 +50,18 @@ function App() {
 
       <main>
         <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Experience />
-        <Contact />
+        <Suspense fallback={null}>
+          <About />
+          <Skills />
+          <Projects />
+          <Experience />
+          <Contact />
+        </Suspense>
       </main>
 
-      <Footer />
+      <Suspense fallback={null}>
+        <Footer />
+      </Suspense>
     </div>
   );
 }
