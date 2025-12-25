@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { GitHubIcon, UpworkIcon, WhatsAppIcon, EmailIcon } from '@/components/icons';
+import { GitHubIcon, UpworkIcon, WhatsAppIcon } from '@/components/icons';
 
 export const Hero: React.FC = () => {
   return (
