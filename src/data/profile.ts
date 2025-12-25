@@ -54,14 +54,14 @@ export interface Profile {
 export const profile: Profile = {
   name: "Aly Hamad",
   title: "Full Stack Developer",
-  location: "Your Location",
+  location: "Munich, Germany",
   headline: "Building seamless digital experiences from concept to deployment",
-  about: "I'm a full stack developer passionate about creating modern, performant web applications. With expertise spanning frontend and backend technologies, I deliver end-to-end solutions that solve real problems. I focus on clean code, scalability, and user experience.",
+  about: "I build practical web applications, automation tools, and data-driven workflows. My focus is on solutions that solve real business problems and deliver tangible value in daily work.",
   availability: "Available for projects",
   contact: {
     email: "aly.hamad.duwang@gmail.com",
     whatsappUrl: "https://chat.whatsapp.com/IytJHQDI1fIH8WqmZFp4eM",
-    githubRepoUrl: "https://github.com/yourusername",
+    githubRepoUrl: "https://github.com/alisayed435-png",
     upworkProfileUrl: "https://www.upwork.com/freelancers/~alyhamad",
   },
   skills: [
@@ -103,7 +103,7 @@ export const profile: Profile = {
     {
       id: "0",
       title: "CaseCraft - Legal Practice Management",
-      description: "Comprehensive legal practice management platform with client intelligence, case orchestration, and analytics. Features six pillars of practice excellence including workflow automation and strategic growth tools.",
+      description: "Comprehensive legal practice management platform with client intelligence, case orchestration, and analytics. Features workflow automation and strategic growth tools.",
       stack: ["React", "TypeScript", "TailwindCSS", "Node.js"],
       github: "https://github.com/alisayed435-png/CaseCraft",
       live: "https://case-craft-alpha.vercel.app/",
@@ -120,7 +120,7 @@ export const profile: Profile = {
     },
     {
       id: "2",
-      title: "FunnelCraft",
+      title: "FunnelCraft SaaS",
       description: "A powerful marketing funnel builder with drag-and-drop interface, real-time analytics, and seamless integrations for creating high-converting sales funnels.",
       stack: ["React", "TypeScript", "TailwindCSS", "Node.js"],
       live: "https://funnel-craft-green.vercel.app/",
@@ -130,20 +130,20 @@ export const profile: Profile = {
   experience: [
     {
       id: "1",
-      company: "Tech Startup Inc",
-      title: "Senior Full Stack Developer",
+      company: "Freelance Developer",
+      title: "Full Stack Developer",
       period: "2022 - Present",
-      description: "Led development of customer-facing web applications and internal tools",
+      description: "Building web applications and automation solutions for clients worldwide",
       highlights: [
-        "Architected and built scalable microservices using Node.js and Docker",
-        "Improved frontend performance by 45% through code splitting and lazy loading",
-        "Mentored junior developers and conducted code reviews",
+        "Developed custom web applications for businesses across various industries",
+        "Built automated workflows and data pipelines for improved efficiency",
+        "Created responsive, accessible interfaces with modern frontend technologies",
       ],
     },
     {
       id: "2",
       company: "Digital Agency",
-      title: "Full Stack Developer",
+      title: "Frontend Developer",
       period: "2020 - 2022",
       description: "Developed web applications for various clients across different industries",
       highlights: [
@@ -152,23 +152,10 @@ export const profile: Profile = {
         "Collaborated with designers and product managers on 20+ projects",
       ],
     },
-    {
-      id: "3",
-      company: "Freelance Developer",
-      title: "Independent Developer",
-      period: "2018 - 2020",
-      description: "Provided full-stack development services to startups and small businesses",
-      highlights: [
-        "Delivered 15+ successful projects from concept to deployment",
-        "Maintained client satisfaction with 98% repeat business rate",
-        "Specialized in custom web applications and WordPress development",
-      ],
-    },
   ],
   socialLinks: [
-    { label: "GitHub", url: "https://github.com/yourusername", icon: "github" },
-    { label: "LinkedIn", url: "https://linkedin.com/in/yourusername", icon: "linkedin" },
-    { label: "Twitter", url: "https://twitter.com/yourusername", icon: "twitter" },
+    { label: "GitHub", url: "https://github.com/alisayed435-png", icon: "github" },
+    { label: "LinkedIn", url: "https://linkedin.com/in/alyhamad", icon: "linkedin" },
     { label: "Upwork", url: "https://www.upwork.com/freelancers/~alyhamad", icon: "upwork" },
   ],
 };

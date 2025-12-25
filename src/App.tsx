@@ -3,14 +3,16 @@ import { Navigation } from '@/components/Navigation';
 import { Hero } from '@/components/sections/Hero';
 
 // Lazy load below-the-fold sections
+const Services = lazy(() => import('@/components/sections/Services').then(m => ({ default: m.Services })));
 const About = lazy(() => import('@/components/sections/About').then(m => ({ default: m.About })));
 const Skills = lazy(() => import('@/components/sections/Skills').then(m => ({ default: m.Skills })));
 const Projects = lazy(() => import('@/components/sections/Projects').then(m => ({ default: m.Projects })));
+const Pricing = lazy(() => import('@/components/sections/Pricing').then(m => ({ default: m.Pricing })));
 const Experience = lazy(() => import('@/components/sections/Experience').then(m => ({ default: m.Experience })));
 const Contact = lazy(() => import('@/components/sections/Contact').then(m => ({ default: m.Contact })));
 const Footer = lazy(() => import('@/components/sections/Footer').then(m => ({ default: m.Footer })));
 
-const sections = ['home', 'about', 'skills', 'projects', 'experience', 'contact'] as const;
+const sections = ['home', 'services', 'projects', 'about', 'skills', 'pricing', 'experience', 'contact'] as const;
 
 function App() {
   const [activeSection, setActiveSection] = useState('home');
@@ -51,9 +53,11 @@ function App() {
       <main>
         <Hero />
         <Suspense fallback={null}>
+          <Services />
+          <Projects />
           <About />
           <Skills />
-          <Projects />
+          <Pricing />
           <Experience />
           <Contact />
         </Suspense>

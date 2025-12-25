@@ -1,147 +1,110 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { GitHubIcon, LinkedInIcon, TwitterIcon, UpworkIcon, ArrowRightIcon } from '@/components/icons';
-import { DuwangLogo } from '@/components/icons/DuwangLogo';
+import { GitHubIcon, LinkedInIcon, UpworkIcon, WhatsAppIcon } from '@/components/icons';
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    {
-      label: 'GitHub',
-      icon: GitHubIcon,
-      url: 'https://github.com/yourusername',
-    },
-    {
-      label: 'LinkedIn',
-      icon: LinkedInIcon,
-      url: 'https://linkedin.com/in/yourusername',
-    },
-    {
-      label: 'Twitter',
-      icon: TwitterIcon,
-      url: 'https://twitter.com/yourusername',
-    },
-    {
-      label: 'Upwork',
-      icon: UpworkIcon,
-      url: 'https://www.upwork.com/freelancers/~alyhamad',
-    },
+    { icon: GitHubIcon, url: 'https://github.com/alisayed435-png', label: 'GitHub' },
+    { icon: UpworkIcon, url: 'https://www.upwork.com/freelancers/~alyhamad', label: 'Upwork' },
+    { icon: LinkedInIcon, url: 'https://linkedin.com/in/alyhamad', label: 'LinkedIn' },
+    { icon: WhatsAppIcon, url: 'https://chat.whatsapp.com/IytJHQDI1fIH8WqmZFp4eM', label: 'WhatsApp' },
   ];
 
-  const handleScrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  const quickLinks = [
+    { name: 'About', href: '#about' },
+    { name: 'Services', href: '#services' },
+    { name: 'Projects', href: '#projects' },
+    { name: 'Pricing', href: '#pricing' },
+    { name: 'Contact', href: '#contact' },
+  ];
 
   return (
-    <footer className="py-8 px-4 sm:px-6 lg:px-8 border-t border-white/10 bg-dark-950/80 backdrop-blur-sm">
-      <div className="max-w-6xl mx-auto">
-        {/* Main Footer Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+    <footer className="relative py-16 border-t border-white/5">
+      {/* Gradient top border */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
+        <div className="grid md:grid-cols-3 gap-12 mb-12">
           {/* Brand */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <a
-              href="#home"
-              className="inline-block mb-3 hover:opacity-80 transition-opacity"
-            >
-              <DuwangLogo size={32} showText={true} />
+          <div>
+            <a href="#" className="flex items-center gap-2 mb-4">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white font-display font-bold text-lg">
+                A
+              </div>
+              <span className="text-white font-medium text-lg">Aly Hamad</span>
             </a>
-            <p className="text-gray-400 text-xs leading-relaxed max-w-xs">
-              Full Stack Developer building modern web experiences
+            <p className="text-white/50 text-sm leading-relaxed mb-6">
+              Full-stack developer crafting digital experiences in Munich, Germany.
             </p>
-          </motion.div>
+            <div className="flex gap-3">
+              {socialLinks.map(({ icon: Icon, url, label }) => (
+                <a
+                  key={label}
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/50 hover:text-purple-400 hover:border-purple-400/50 hover:bg-purple-500/10 transition-all"
+                  aria-label={label}
+                >
+                  <Icon size={18} />
+                </a>
+              ))}
+            </div>
+          </div>
 
           {/* Quick Links */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
-            <h4 className="font-semibold text-white mb-3 text-sm">Quick Links</h4>
-            <ul className="space-y-1.5 text-xs">
-              {['Home', 'About', 'Skills', 'Projects', 'Contact'].map((item) => (
-                <li key={item}>
+          <div>
+            <h3 className="text-white font-medium mb-4">Quick Links</h3>
+            <ul className="space-y-2">
+              {quickLinks.map((link) => (
+                <li key={link.name}>
                   <a
-                    href={`#${item.toLowerCase()}`}
-                    className="text-gray-400 hover:text-purple-400 transition-colors inline-block"
+                    href={link.href}
+                    className="text-white/50 text-sm hover:text-purple-400 transition-colors"
                   >
-                    {item}
+                    {link.name}
                   </a>
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
 
-          {/* Social Links */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.15 }}
-          >
-            <h4 className="font-semibold text-white mb-3 text-sm">Follow</h4>
-            <div className="flex flex-wrap gap-2">
-              {socialLinks.map((link) => {
-                const Icon = link.icon;
-                return (
-                  <motion.a
-                    key={link.label}
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-9 h-9 rounded-lg bg-white/10 hover:bg-purple-500/20 text-gray-400 hover:text-purple-400 flex items-center justify-center transition-all"
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                    whileTap={{ scale: 0.95 }}
-                    aria-label={link.label}
-                  >
-                    <Icon size={18} />
-                  </motion.a>
-                );
-              })}
-            </div>
-          </motion.div>
-
-          {/* Back to Top */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex items-end justify-start sm:justify-end"
-          >
-            <motion.button
-              onClick={handleScrollToTop}
-              className="flex items-center gap-1 px-3 py-2 rounded-lg bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white transition-colors text-xs font-medium"
-              whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              aria-label="Scroll to top"
-            >
-              <span>Top</span>
-              <ArrowRightIcon size={14} className="-rotate-90" />
-            </motion.button>
-          </motion.div>
+          {/* Contact */}
+          <div>
+            <h3 className="text-white font-medium mb-4">Get in Touch</h3>
+            <ul className="space-y-3 text-white/50 text-sm">
+              <li>
+                <a href="mailto:aly.hamad.duwang@gmail.com" className="hover:text-purple-400 transition-colors">
+                  aly.hamad.duwang@gmail.com
+                </a>
+              </li>
+              <li>Munich, Germany</li>
+              <li className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+                Available for projects
+              </li>
+            </ul>
+          </div>
         </div>
 
-        {/* Divider */}
-        <div className="h-px bg-gradient-to-r from-transparent via-purple-500/20 to-transparent mb-4" />
-
-        {/* Bottom Section */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.25 }}
-          className="flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-gray-500"
-        >
-          <p>Copyright {currentYear} Aly Hamad. All rights reserved.</p>
-          <p className="text-center sm:text-right">Crafted with attention to detail</p>
-        </motion.div>
+        {/* Bottom */}
+        <div className="pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p className="text-white/40 text-sm">
+            © {currentYear} Aly Hamad. Crafted with passion.
+          </p>
+          <motion.button
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="flex items-center gap-2 text-white/40 text-sm hover:text-purple-400 transition-colors"
+            whileHover={{ y: -2 }}
+          >
+            <span>Back to top</span>
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+            </svg>
+          </motion.button>
+        </div>
       </div>
     </footer>
   );
