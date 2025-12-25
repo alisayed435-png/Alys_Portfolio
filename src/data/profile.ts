@@ -126,6 +126,15 @@ export const profile: Profile = {
       live: "https://funnel-craft-green.vercel.app/",
       image: "/Screenshot 2025-12-16 160108.png",
     },
+    {
+      id: "3",
+      title: "Absentify Clone",
+      description: "A pixel-perfect clone of Absentify - an absence management and vacation tracking platform. Features modern UI with smooth animations and responsive design.",
+      stack: ["Next.js", "TypeScript", "TailwindCSS", "Framer Motion"],
+      github: "https://github.com/alisayed435-png/AbsentifyProp",
+      live: "https://absentify-clone.vercel.app/",
+      image: "/absentify-clone-screenshot.png",
+    },
   ],
   experience: [
     {
