@@ -101,6 +101,15 @@ export const profile: Profile = {
   ],
   projects: [
     {
+      id: "4",
+      title: "Farmlyest",
+      description: "A farm-to-table marketplace platform connecting local farmers with consumers. Features fresh produce discovery, nearby farm finder, and seamless ordering experience.",
+      stack: ["Next.js", "TypeScript", "TailwindCSS", "Framer Motion"],
+      github: "https://github.com/alisayed435-png/FarmlyestProp",
+      live: "https://farmlyest-sigma.vercel.app/",
+      image: "/farmlyest-screenshot.png",
+    },
+    {
       id: "3",
       title: "Absentify Clone",
       description: "A pixel-perfect clone of Absentify - an absence management and vacation tracking platform. Features modern UI with smooth animations and responsive design.",
