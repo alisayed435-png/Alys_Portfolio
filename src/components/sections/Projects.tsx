@@ -33,14 +33,17 @@ export const Projects: React.FC = () => {
         </motion.div>
 
         {/* Uniform Grid - 2 columns on desktop, 1 on mobile */}
+        {/* When project count is odd, first project spans full width for balanced look */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {profile.projects.map((project, index) => {
             const isHovered = hoveredIndex === index;
+            const isOddCount = profile.projects.length % 2 !== 0;
+            const isFirstAndOdd = index === 0 && isOddCount;
 
             return (
               <motion.div
                 key={project.id}
-                className="group relative"
+                className={`group relative ${isFirstAndOdd ? 'md:col-span-2' : ''}`}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -50,8 +53,9 @@ export const Projects: React.FC = () => {
               >
                 <div className={`relative overflow-hidden rounded-2xl border border-white/10 bg-[#0d0d15] transition-all duration-500 ${isHovered ? 'border-purple-500/50 shadow-xl shadow-purple-500/10' : ''
                   }`}>
-                  {/* Project Image - Fixed aspect ratio */}
-                  <div className="relative aspect-[16/10] overflow-hidden bg-gradient-to-br from-purple-500/10 to-pink-500/5">
+                  {/* Project Image - Fixed aspect ratio, taller for featured */}
+                  <div className={`relative overflow-hidden bg-gradient-to-br from-purple-500/10 to-pink-500/5 ${isFirstAndOdd ? 'aspect-[21/9]' : 'aspect-[16/10]'
+                    }`}>
                     {project.image ? (
                       <>
                         <img
