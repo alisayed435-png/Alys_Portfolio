@@ -101,6 +101,15 @@ export const profile: Profile = {
   ],
   projects: [
     {
+      id: "5",
+      title: "Interactive Design Studio",
+      description: "A visually stunning digital innovation studio landing page featuring 3D geometric animations, smooth parallax effects, and modern dark-themed design.",
+      stack: ["Next.js", "TypeScript", "TailwindCSS", "Three.js"],
+      github: "https://github.com/alisayed435-png/interactive_design_site",
+      live: "https://interactive-design-site.vercel.app/",
+      image: "/interactive-design-screenshot.png",
+    },
+    {
       id: "4",
       title: "Farmlyest",
       description: "A farm-to-table marketplace platform connecting local farmers with consumers. Features fresh produce discovery, nearby farm finder, and seamless ordering experience.",
