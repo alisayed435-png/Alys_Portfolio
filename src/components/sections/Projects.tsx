@@ -32,16 +32,15 @@ export const Projects: React.FC = () => {
           </p>
         </motion.div>
 
-        {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+        {/* Uniform Grid - 2 columns on desktop, 1 on mobile */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {profile.projects.map((project, index) => {
-            const isLarge = index === 0;
             const isHovered = hoveredIndex === index;
 
             return (
               <motion.div
                 key={project.id}
-                className={`group relative ${isLarge ? 'md:col-span-2 md:row-span-2' : ''}`}
+                className="group relative"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -49,105 +48,119 @@ export const Projects: React.FC = () => {
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
               >
-                <div className={`relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] transition-all duration-500 ${isHovered ? 'border-purple-500/50 shadow-xl shadow-purple-500/10' : ''
-                  } ${isLarge ? 'h-[400px] md:h-[500px]' : 'h-[280px] md:h-[320px]'}`}>
-
-                  {/* Project Image */}
-                  {project.image && (
-                    <div className="absolute inset-0">
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                      />
-                      {/* Overlay gradient */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0f] via-[#0a0a0f]/60 to-transparent" />
-                    </div>
-                  )}
-
-                  {/* Fallback gradient if no image */}
-                  {!project.image && (
-                    <div className={`absolute inset-0 bg-gradient-to-br transition-opacity duration-500 ${isHovered ? 'opacity-100' : 'opacity-50'
-                      } ${index % 3 === 0 ? 'from-purple-500/20 to-pink-500/10' :
-                        index % 3 === 1 ? 'from-violet-500/20 to-purple-500/10' :
-                          'from-pink-500/20 to-orange-500/10'
-                      }`} />
-                  )}
-
-                  {/* Content */}
-                  <div className="relative h-full p-6 md:p-8 flex flex-col">
-                    {/* Top row: tags and live badge */}
-                    <div className="flex items-start justify-between mb-auto">
-                      <div className="flex flex-wrap gap-2">
-                        {project.stack.slice(0, 3).map((tech) => (
-                          <span
-                            key={tech}
-                            className="px-3 py-1 text-xs font-medium rounded-full bg-black/50 backdrop-blur-sm text-white/80 border border-white/10"
-                          >
-                            {tech}
-                          </span>
-                        ))}
+                <div className={`relative overflow-hidden rounded-2xl border border-white/10 bg-[#0d0d15] transition-all duration-500 ${isHovered ? 'border-purple-500/50 shadow-xl shadow-purple-500/10' : ''
+                  }`}>
+                  {/* Project Image - Fixed aspect ratio */}
+                  <div className="relative aspect-[16/10] overflow-hidden bg-gradient-to-br from-purple-500/10 to-pink-500/5">
+                    {project.image ? (
+                      <>
+                        <img
+                          src={project.image}
+                          alt={project.title}
+                          className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                        />
+                        {/* Subtle overlay for contrast */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d15] via-transparent to-transparent opacity-60" />
+                      </>
+                    ) : (
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <span className="text-6xl font-display text-white/10">
+                          {String(index + 1).padStart(2, '0')}
+                        </span>
                       </div>
-                      {project.live && (
-                        <span className="flex items-center gap-1.5 px-3 py-1 text-xs font-medium rounded-full bg-green-500/20 backdrop-blur-sm text-green-400 border border-green-500/30">
+                    )}
+
+                    {/* Tags overlay - top left */}
+                    <div className="absolute top-4 left-4 flex flex-wrap gap-2">
+                      {project.stack.slice(0, 3).map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-2.5 py-1 text-xs font-medium rounded-full bg-black/60 backdrop-blur-sm text-white/80 border border-white/10"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Live badge - top right */}
+                    {project.live && (
+                      <div className="absolute top-4 right-4">
+                        <span className="flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-full bg-green-500/20 backdrop-blur-sm text-green-400 border border-green-500/30">
                           <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
                           Live
                         </span>
-                      )}
-                    </div>
-
-                    {/* Project info */}
-                    <div className="mt-auto">
-                      <h3 className={`font-display text-white mb-2 ${isLarge ? 'text-3xl md:text-4xl' : 'text-xl md:text-2xl'}`}>
-                        {project.title}
-                      </h3>
-                      <p className={`text-white/70 ${isLarge ? 'text-base md:text-lg' : 'text-sm'} line-clamp-2 mb-6`}>
-                        {project.description}
-                      </p>
-
-                      {/* Links */}
-                      <div className="flex items-center gap-4">
-                        {project.live && (
-                          <a
-                            href={project.live}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-2 text-sm text-white/80 hover:text-purple-400 transition-colors"
-                          >
-                            <ExternalLinkIcon size={16} />
-                            <span>View Live</span>
-                          </a>
-                        )}
-                        {project.github && (
-                          <a
-                            href={project.github}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-2 text-sm text-white/80 hover:text-purple-400 transition-colors"
-                          >
-                            <GitHubIcon size={16} />
-                            <span>GitHub</span>
-                          </a>
-                        )}
                       </div>
-                    </div>
+                    )}
 
                     {/* Hover arrow */}
                     <motion.div
-                      className="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center"
+                      className="absolute bottom-4 right-4 w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center"
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={{ opacity: isHovered ? 1 : 0, scale: isHovered ? 1 : 0.8 }}
                     >
-                      <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7v10" />
                       </svg>
                     </motion.div>
+                  </div>
+
+                  {/* Content - Below image, not overlapping */}
+                  <div className="p-6">
+                    <h3 className="font-display text-xl md:text-2xl text-white mb-2 group-hover:text-purple-300 transition-colors">
+                      {project.title}
+                    </h3>
+                    <p className="text-white/60 text-sm leading-relaxed mb-4 line-clamp-2">
+                      {project.description}
+                    </p>
+
+                    {/* Links - always at bottom */}
+                    <div className="flex items-center gap-4 pt-4 border-t border-white/5">
+                      {project.live && (
+                        <a
+                          href={project.live}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 text-sm text-white/70 hover:text-purple-400 transition-colors"
+                        >
+                          <ExternalLinkIcon size={16} />
+                          <span>View Live</span>
+                        </a>
+                      )}
+                      {project.github && (
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 text-sm text-white/70 hover:text-purple-400 transition-colors"
+                        >
+                          <GitHubIcon size={16} />
+                          <span>GitHub</span>
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </div>
               </motion.div>
             );
           })}
         </div>
+
+        {/* View more link if needed */}
+        {profile.projects.length > 4 && (
+          <motion.div
+            className="mt-12 text-center"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+          >
+            <a href="#" className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 transition-colors">
+              <span>View all projects</span>
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          </motion.div>
+        )}
       </div>
     </section>
   );
