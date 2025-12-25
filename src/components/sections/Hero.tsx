@@ -152,15 +152,17 @@ export const Hero: React.FC = () => {
           </motion.div>
         </div>
 
-        {/* Scroll indicator */}
+        {/* Scroll indicator - centered on screen */}
         <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+          className="absolute bottom-8 left-0 right-0 flex justify-center"
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
         >
-          <span className="text-white/40 text-xs uppercase tracking-wider">Scroll</span>
-          <div className="w-6 h-10 rounded-full border border-white/20 flex items-start justify-center p-2">
-            <div className="w-1 h-2 bg-purple-400 rounded-full" />
+          <div className="flex flex-col items-center gap-2">
+            <span className="text-white/40 text-xs uppercase tracking-wider">Scroll</span>
+            <div className="w-6 h-10 rounded-full border border-white/20 flex items-start justify-center p-2">
+              <div className="w-1 h-2 bg-purple-400 rounded-full" />
+            </div>
           </div>
         </motion.div>
       </div>
